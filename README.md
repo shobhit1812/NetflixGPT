@@ -9,12 +9,12 @@ Currently, two official plugins are available:
 
 ## Instructions
 
-1. (cd NetflixGPT)
-2. (pnpm install)
-3. (pnpm run dev)
+1. `cd NetflixGPT`
+2. `pnpm install`
+3. `pnpm run dev`
 
 ## For Network (3 methods)
 
 1. `pnpm run dev --host`
-2. `"host": "vite --host"` in package.json below preview in scripts, then `pnpm run host`
+2. `"host": "vite --host"` write this in package.json below preview in scripts, then `pnpm run host`
 3. In vite.config.js write `server: { host: true, }` after plugins
