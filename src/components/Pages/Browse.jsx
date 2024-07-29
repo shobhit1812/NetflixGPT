@@ -28,14 +28,6 @@ const Browse = () => {
         <GptSearch />
       ) : (
         <div className="w-full h-full flex flex-col">
-          {/* 
-            MainContainer
-              - VideoBackground
-              - VideoTitle
-            SecondaryContainer
-              - MovieList * n
-              - cards * n
-         */}
           <MainContainer />
           <SecondaryContainer />
         </div>
