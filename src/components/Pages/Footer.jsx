@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="text-white text-lg p-5 pb-10 flex justify-center">
+    <div className="text-white text-base p-5 pb-10 flex justify-center">
       <h1>
         <a
           href="https://github.com/Shobhit1812"
@@ -9,7 +9,9 @@ const Footer = () => {
         >
           Shobhit Nautiyal
         </a>{" "}
-        &copy; <span className="italic">Feel Free To Copy</span>
+        | No &copy; copy right issues.{" "}
+        <span className="italic">Feel Free To Copy. </span>
+        If you need any help, ping me!
       </h1>
     </div>
   );
