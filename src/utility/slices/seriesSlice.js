@@ -3,28 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 const seriesSlice = createSlice({
   name: "series",
   initialState: {
-    airingToday: null,
-    onTheAir: null,
-    popular: null,
-    topRated: null,
+    airingTodayTV: null,
+    trendingTV: null,
+    topRatedTV: null,
   },
   reducers: {
-    addAiringTodaySeries: (state, action) => {
-      state.airingToday = action.payload;
+    addAiringTodayTV: (state, action) => {
+      state.airingTodayTV = action.payload;
     },
-    addOnTheAir: (state, action) => {
-      state.onTheAir = action.payload;
+    addTrendingTV: (state, action) => {
+      state.trendingTV = action.payload;
     },
-    addPopular: (state, action) => {
-      state.popular = action.payload;
-    },
-    addTopRated: (state, action) => {
-      state.topRated = action.payload;
+    addTopRatedTV: (state, action) => {
+      state.topRatedTV = action.payload;
     },
   },
 });
 
-export const { addAiringTodaySeries, addOnTheAir, addPopular, addTopRated } =
+export const { addAiringTodayTV, addTrendingTV, addTopRatedTV } =
   seriesSlice.actions;
 
 export default seriesSlice.reducer;

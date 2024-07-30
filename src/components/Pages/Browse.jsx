@@ -1,25 +1,25 @@
 import Header from "../Body/Header";
 import { useSelector } from "react-redux";
-import useNowPlayingMovies from "../../hooks/useNowPlayingMovies";
 import MainContainer from "../MainContainer/MainContainer";
 import SecondaryContainer from "../SecondaryContainer/SecondaryContainer";
-import usePopularMovies from "../../hooks/usePopularMovies";
-import useTopRatedMovies from "../../hooks/useTopRatedMovies";
-import useUpcomingMovies from "../../hooks/useUpcomingMovies";
-import useAiringTodaySeries from "../../hooks/useAiringTodaySeries";
-import useOnTheAirSeries from "../../hooks/useOnTheAirSeries";
 import GptSearch from "../GptSearch/GptSearch";
+import useNowPlayingMovies from "../../hooks/movies/useNowPlayingMovies";
+import useTopRatedMovies from "../../hooks/movies/useTopRatedMovies";
+import useTrendingMovies from "../../hooks/movies/useTrendingMovies";
+import useAiringTodayTV from "../../hooks/tv/useAiringTodayTV";
+import useTopRatedTV from "../../hooks/tv/useTopRatedTV";
+import useTrendingTV from "../../hooks/tv/useTrendingTV";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   // fetching the data and updating the store
   useNowPlayingMovies();
-  usePopularMovies();
   useTopRatedMovies();
-  useUpcomingMovies();
-  useAiringTodaySeries();
-  useOnTheAirSeries();
+  useTrendingMovies();
+  useAiringTodayTV();
+  useTopRatedTV();
+  useTrendingTV();
 
   return (
     <div className="scroll-smooth font-poppins w-full h-screen">

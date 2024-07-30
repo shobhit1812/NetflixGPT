@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS } from "../utility/constants/constants";
-import { addNowPlayingMovies } from "../utility/slices/moviesSlice";
+import { API_OPTIONS } from "../../utility/constants/constants";
+import { addNowPlayingMovies } from "../../utility/slices/moviesSlice";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const useNowPlayingMovies = () => {
 
   useEffect(() => {
     if (!nowPlayingMovies) getNowPlayingMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

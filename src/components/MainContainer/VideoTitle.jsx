@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaPlay, FaInfo } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import useMovieTrailer from "../../hooks/useMovieTrailer";
+import useMovieTrailer from "../../hooks/trailer/useMovieTrailer";
 
 const VideoTitle = ({ title, overview, id }) => {
   const [showOverview, setShowOverview] = useState(true);
