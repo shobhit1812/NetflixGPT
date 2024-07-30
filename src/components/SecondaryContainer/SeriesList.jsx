@@ -7,15 +7,16 @@ const SeriesList = ({ title, series }) => {
     <div className="pl-3 pt-6 md:p-6 lg:p-6">
       <h1 className="text-2xl sm:text-3xl font-semibold text-white">{title}</h1>
       <div className="flex overflow-x-auto scrollbar-hide space-x-6 pt-5">
-        {series?.length ? (
+        {series?.length === null ? (
+          <Shimmer />
+        ) : (
           series?.map((series) => (
             <SeriesCard
               key={series?.id}
               backdrop_path={series?.backdrop_path}
+              seriesId={series?.id}
             />
           ))
-        ) : (
-          <Shimmer />
         )}
       </div>
     </div>
