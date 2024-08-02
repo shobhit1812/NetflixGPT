@@ -72,17 +72,24 @@ const MovieCard = ({ backdrop_path, movieId }) => {
       />
       {isHovered && movieDetails && (
         <div className="absolute inset-0 flex flex-col justify-start bg-black bg-opacity-70 text-white p-4 rounded-lg">
-          <h2 className="text-xl font-bold mb-2">{movieDetails.title}</h2>
-          <p className="text-sm mb-2 ">
+          <h2 className="text-xl font-bold mb-2 cursor-pointer">
+            {movieDetails.title}
+          </h2>
+          <p className="text-sm mb-2 cursor-pointer">
             <span className="text-green-500">
               {movieDetails.vote_average} Rating{" "}
             </span>
             {movieDetails?.release_date?.split("-")[0]}
           </p>
-          <p className="text-sm mb-2">Runtime: {movieDetails.runtime} min</p>
+          <p className="text-sm mb-2 cursor-pointer">
+            Runtime: {movieDetails.runtime} min
+          </p>
           <div className="flex flex-wrap justify-start">
             {movieDetails.genres.map((genre) => (
-              <span key={genre.id} className="text-xs px-1 text-green-500">
+              <span
+                key={genre.id}
+                className="text-xs px-1 text-green-500 cursor-pointer"
+              >
                 {genre.name}
               </span>
             ))}
