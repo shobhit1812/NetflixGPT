@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FAQ_DATA } from "../../utility/constants/constants";
+import { FAQ_HEADING, FAQ_DATA } from "../../utility/constants/faqConstants";
 import { GoPlus } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
+import { useSelector } from "react-redux";
 
 const Card = ({ title, description, isVisible, setIsVisible }) => {
   return (
@@ -33,14 +35,16 @@ const FAQ = () => {
     setVisibleSection(visibleSection === index ? "" : index);
   };
 
+  const changeLanguage = useSelector((store) => store.config.lang);
+
   return (
     <>
       <div className="text-white pt-5 w-11/12 md:w-8/12 mx-auto">
         <div className="flex justify-center font-bold text-3xl md:text-5xl">
-          <h1>Frequently Asked Questions</h1>
+          <h1>{FAQ_HEADING[changeLanguage]?.faq}</h1>
         </div>
         <div className="flex flex-col mt-10 mb-12">
-          {FAQ_DATA.map((faq) => (
+          {FAQ_DATA[changeLanguage].map((faq) => (
             <Card
               key={faq.id}
               title={faq.title}

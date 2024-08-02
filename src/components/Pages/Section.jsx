@@ -1,10 +1,12 @@
-import { SECTION } from "../../utility/constants/constants";
+import { useSelector } from "react-redux";
+import { SECTION_DATA } from "../../utility/constants/sectionsConstants";
 import SectionCard from "./SectionCard";
 
 const Section = () => {
+  const changeLanguage = useSelector((store) => store.config.lang);
   return (
     <div>
-      {SECTION.map((section, index) => (
+      {SECTION_DATA[changeLanguage].map((section, index) => (
         <SectionCard
           key={section?.id}
           title={section?.title}

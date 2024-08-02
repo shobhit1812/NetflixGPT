@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+import { FOOTER_PAGE_CONSTANTS } from "../../utility/constants/languageConstants.js";
+
 const Footer = () => {
+  const changeLanguage = useSelector((store) => store.config.lang);
   return (
     <div className="text-white text-base p-5 pb-10 flex justify-center">
       <h1>
@@ -7,11 +11,13 @@ const Footer = () => {
           target="_blank"
           className="hover:text-[#414141]"
         >
-          Shobhit Nautiyal
+          {FOOTER_PAGE_CONSTANTS[changeLanguage]?.name}
         </a>{" "}
-        | No &copy; copy right issues.{" "}
-        <span className="italic">Feel Free To Copy. </span>
-        If you need any help, ping me!
+        {FOOTER_PAGE_CONSTANTS[changeLanguage]?.span1}{" "}
+        <span className="italic">
+          {FOOTER_PAGE_CONSTANTS[changeLanguage]?.span2}{" "}
+        </span>
+        {FOOTER_PAGE_CONSTANTS[changeLanguage]?.span3}
       </h1>
     </div>
   );

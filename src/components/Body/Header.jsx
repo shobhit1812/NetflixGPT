@@ -91,6 +91,27 @@ const Header = () => {
     >
       <img src={netflixLogo} alt="netflix-logo" className="w-48 h-20" />
 
+      {!user && (
+        <div className="relative flex items-center mr-4" ref={userIconRef}>
+          {showGptSearch && (
+            <select
+              className="mr-2 p-1 border border-white bg-black bg-opacity-70 text-white hover:bg-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option
+                  key={lang.identifier}
+                  value={lang.identifier}
+                  className="bg-black"
+                >
+                  <TbLanguage /> {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+      )}
+
       {user && (
         <div className="relative flex items-center mr-4" ref={userIconRef}>
           {showGptSearch && (

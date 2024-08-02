@@ -6,9 +6,10 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../utility/slices/userSlice";
 import { NETFLIX_ICON } from "../../utility/constants/constants";
+import { LOGIN_PAGE_CONSTANTS } from "../../utility/constants/languageConstants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -19,6 +20,8 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
+  const changeLanguage = useSelector((store) => store.config.lang);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -88,14 +91,16 @@ const Login = () => {
           className="flex flex-col text-white"
         >
           <h1 className="text-3xl mb-8 font-bold">
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {isSignInForm
+              ? LOGIN_PAGE_CONSTANTS[changeLanguage]?.signIn
+              : LOGIN_PAGE_CONSTANTS[changeLanguage]?.signUp}
           </h1>
           {!isSignInForm && (
             <input
               id="name"
               ref={name}
               type="text"
-              placeholder="Name"
+              placeholder={LOGIN_PAGE_CONSTANTS[changeLanguage]?.name}
               className="p-3 mb-8 rounded bg-slate-600 bg-opacity-30 border border-white"
               autoComplete="name"
             />
@@ -104,7 +109,7 @@ const Login = () => {
             id="email"
             ref={email}
             type="text"
-            placeholder="Email"
+            placeholder={LOGIN_PAGE_CONSTANTS[changeLanguage]?.email}
             className="p-3 mb-8 rounded bg-slate-600 bg-opacity-30 border border-white"
             autoComplete="email"
           />
@@ -112,7 +117,7 @@ const Login = () => {
             id="password"
             ref={password}
             type="password"
-            placeholder="Password"
+            placeholder={LOGIN_PAGE_CONSTANTS[changeLanguage]?.password}
             className="p-3 mb-8 rounded bg-slate-600 bg-opacity-30 border border-white"
             autoComplete="current-password"
           />
@@ -120,22 +125,28 @@ const Login = () => {
             className="bg-red-600 py-3 rounded font-semibold text-lg mb-4 hover:bg-red-700 transition duration-200"
             onClick={handleButtonClick}
           >
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {isSignInForm
+              ? LOGIN_PAGE_CONSTANTS[changeLanguage]?.signIn
+              : LOGIN_PAGE_CONSTANTS[changeLanguage]?.signUp}
           </button>
           <p className="text-red-500 mb-5">{errorMessage}</p>
           <div className="flex items-center mb-8">
             <input type="checkbox" id="remember" className="mr-2 w-4 h-4" />
             <label htmlFor="remember" className="text-sm">
-              Remember me
+              {LOGIN_PAGE_CONSTANTS[changeLanguage]?.remember}
             </label>
           </div>
           <h2 className="text-sm mt-3">
-            {isSignInForm ? "New to Netflix?" : "Already registered?"}{" "}
+            {isSignInForm
+              ? LOGIN_PAGE_CONSTANTS[changeLanguage]?.signIn_tag
+              : LOGIN_PAGE_CONSTANTS[changeLanguage]?.signUp_tag}
             <span
               className="cursor-pointer hover:underline"
               onClick={toggleSignInForm}
             >
-              {isSignInForm ? "Sign up now" : "Sign In"}
+              {isSignInForm
+                ? LOGIN_PAGE_CONSTANTS[changeLanguage]?.signUpNow
+                : LOGIN_PAGE_CONSTANTS[changeLanguage]?.signIn}
             </span>
             .
           </h2>
