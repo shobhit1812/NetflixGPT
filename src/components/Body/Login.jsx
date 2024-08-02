@@ -13,6 +13,7 @@ import { LOGIN_PAGE_CONSTANTS } from "../../utility/constants/languageConstants"
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [validErrorMsg, setValidErrorMsg] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Login = () => {
   const handleButtonClick = () => {
     const message = checkValidData(email.current.value, password.current.value);
 
-    if (message) return;
+    if (message) setValidErrorMsg(message);
 
     if (!isSignInForm) {
       // Sign Up Logic
@@ -59,7 +60,7 @@ const Login = () => {
             })
             .catch((error) => {
               // An error occurred
-              setErrorMessage(error);
+              alert(error);
             });
         })
         .catch((error) => {
@@ -129,6 +130,7 @@ const Login = () => {
               ? LOGIN_PAGE_CONSTANTS[changeLanguage]?.signIn
               : LOGIN_PAGE_CONSTANTS[changeLanguage]?.signUp}
           </button>
+          <p className="text-red-500 mb-2">{validErrorMsg}</p>
           <p className="text-red-500 mb-5">{errorMessage}</p>
           <div className="flex items-center mb-8">
             <input type="checkbox" id="remember" className="mr-2 w-4 h-4" />

@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser, removeUser } from "../../utility/slices/userSlice";
+import { addUser, removeUser } from "../../utility/slices/userSlice.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../utility/constants/firebase";
 import { useNavigate } from "react-router-dom";
-import { toggleGptSearchView } from "../../utility/slices/gptSlice";
+import { toggleGptSearchView } from "../../utility/slices/gptSlice.js";
 import { SUPPORTED_LANGUAGES } from "../../utility/constants/constants.js";
-import { changeLanguage } from "../../utility/slices/configSlice";
-import { TbLanguage } from "react-icons/tb";
+import { changeLanguage } from "../../utility/slices/configSlice.js";
 import netflixLogo from "../../assets/netflix-logo.png";
 
 const Header = () => {
@@ -93,7 +92,7 @@ const Header = () => {
 
       {!user && (
         <div className="relative flex items-center mr-4" ref={userIconRef}>
-          {showGptSearch && (
+          {
             <select
               className="mr-2 p-1 border border-white bg-black bg-opacity-70 text-white hover:bg-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               onChange={handleLanguageChange}
@@ -104,11 +103,11 @@ const Header = () => {
                   value={lang.identifier}
                   className="bg-black"
                 >
-                  <TbLanguage /> {lang.name}
+                  {lang.name}
                 </option>
               ))}
             </select>
-          )}
+          }
         </div>
       )}
 
@@ -125,7 +124,7 @@ const Header = () => {
                   value={lang.identifier}
                   className="bg-black"
                 >
-                  <TbLanguage /> {lang.name}
+                  {lang.name}
                 </option>
               ))}
             </select>

@@ -29,28 +29,32 @@ const GptSearchBar = () => {
       searchText.current.value +
       ". Only give me names of 5 of movies, with comma separated.";
 
-    const gptResults = await openai.chat.completions.create({
-      messages: [{ role: "user", content: getQuery }],
-      model: "gpt-3.5-turbo",
-    });
+    try {
+      const gptResults = await openai.chat.completions.create({
+        messages: [{ role: "user", content: getQuery }],
+        model: "gpt-3.5-turbo",
+      });
 
-    if (!gptResults.choices) {
-      // TODO: Write Error handling
-      console.error("No choices returned from GPT");
-      return;
+      if (!gptResults.choices) {
+        // TODO: Write Error handling
+        console.error("No choices returned from GPT");
+        return;
+      }
+
+      console.log(gptResults?.choices[0]?.message?.content);
+      const gptMovies = gptResults?.choices[0]?.message?.content.split(",");
+
+      const data = gptMovies.map((movie) => searchMovieTMDB(movie));
+
+      const tmdbResults = await Promise.all(data);
+      console.log(tmdbResults);
+
+      dispatch(
+        addGptMovieResults({ movieName: gptMovies, movieResults: tmdbResults })
+      );
+    } catch (error) {
+      alert(error);
     }
-
-    console.log(gptResults?.choices[0]?.message?.content);
-    const gptMovies = gptResults?.choices[0]?.message?.content.split(",");
-
-    const data = gptMovies.map((movie) => searchMovieTMDB(movie));
-
-    const tmdbResults = await Promise.all(data);
-    console.log(tmdbResults);
-
-    dispatch(
-      addGptMovieResults({ movieName: gptMovies, movieResults: tmdbResults })
-    );
   };
 
   return (
