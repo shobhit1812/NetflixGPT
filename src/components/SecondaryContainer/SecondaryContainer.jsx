@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import MovieList from "../SecondaryContainer/MovieList";
 import SeriesList from "../SecondaryContainer/SeriesList";
+import Footer from "../Pages/Footer";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store?.movies);
@@ -28,6 +29,9 @@ const SecondaryContainer = () => {
             movies={movies?.topRatedMovies}
           />
           <SeriesList title={"Top Rated TV"} series={series?.topRatedTV} />
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     )

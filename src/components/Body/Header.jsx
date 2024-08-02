@@ -123,7 +123,7 @@ const Header = () => {
               onClick={handleToggleUser}
             />
             {showBtn && (
-              <div className="absolute top-full right-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-slate-800 text-white rounded shadow-lg">
                 <div className="px-4 py-2 shadow-lg">
                   <h3 className="text-lg text-center">{user?.displayName}</h3>
                 </div>
