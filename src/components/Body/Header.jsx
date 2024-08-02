@@ -115,22 +115,27 @@ const Header = () => {
           >
             {showGptSearch ? "Home" : "GPT Search"}
           </button>
-          <img
-            src={user?.photoURL}
-            alt="user-icon"
-            className="rounded w-9 h-9 cursor-pointer"
-            onClick={handleToggleUser}
-          />
-          {showBtn && (
-            <div className="absolute top-full -right-6 mt-3">
-              <button
-                className="bg-red-600 text-white px-4 py-2 rounded"
-                onClick={handleSignOut}
-              >
-                Logout
-              </button>
-            </div>
-          )}
+          <div className="relative">
+            <img
+              src={user?.photoURL}
+              alt="user-icon"
+              className="rounded w-9 h-9 cursor-pointer"
+              onClick={handleToggleUser}
+            />
+            {showBtn && (
+              <div className="absolute top-full right-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg">
+                <div className="px-4 py-2 shadow-lg">
+                  <h3 className="text-lg text-center">{user?.displayName}</h3>
+                </div>
+                <button
+                  className="w-full text-center px-4 py-2 bg-red-600 hover:bg-red-700 transition-colors rounded-b"
+                  onClick={handleSignOut}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
