@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { IMG_CDN_URL } from "../../utility/constants/constants";
 import { API_OPTIONS } from "../../utility/constants/constants.js";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ backdrop_path, movieId }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieKey, setMovieKey] = useState(null);
+  const navigate = useNavigate();
 
   const fetchMovieDetails = async (id) => {
     try {
@@ -50,9 +52,11 @@ const MovieCard = ({ backdrop_path, movieId }) => {
     }
   };
 
+  // You may include an optional state value to store in history state, which you can then access on the destination route via useLocation. For example:
   const handleClick = () => {
     if (movieKey) {
-      window.open(`https://www.youtube.com/watch?v=${movieKey}`, "_blank");
+      // window.open(`https://www.youtube.com/watch?v=${movieKey}`, "_blank");
+      navigate("/watchpage", { state: { movieKey } });
     }
   };
 
@@ -86,12 +90,12 @@ const MovieCard = ({ backdrop_path, movieId }) => {
           </p>
           <div className="flex flex-wrap justify-start">
             {movieDetails.genres.map((genre) => (
-              <span
+              <li
                 key={genre.id}
                 className="text-xs px-1 text-green-500 cursor-pointer"
               >
                 {genre.name}
-              </span>
+              </li>
             ))}
           </div>
         </div>

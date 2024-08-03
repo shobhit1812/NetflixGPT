@@ -57,9 +57,9 @@ const SeriesCard = ({ backdrop_path, seriesId }) => {
           </p>
           <div className="flex flex-wrap justify-start">
             {seriesDetails.genres.map((genre) => (
-              <span key={genre.id} className="text-xs px-1 text-green-500">
+              <li key={genre.id} className="text-xs px-1 text-green-500">
                 {genre.name}
-              </span>
+              </li>
             ))}
           </div>
         </div>
