@@ -1,9 +1,15 @@
 import { NETFLIX_WALLPAPER } from "../../utility/constants/constants";
 import GptSearchBar from "../GptSearch/GptSearchBar";
 import GptMovieSuggestions from "../GptSearch/GptMovieSuggestions";
+import useOnline from "../../hooks/custom/useOnline.js";
 
 const GptSearch = () => {
-  return (
+  const isOnline = useOnline();
+  return !isOnline ? (
+    <h1 className="flex justify-center items-center font-poppins text-4xl mt-10">
+      🔴 Offline, Please check your internet connection
+    </h1>
+  ) : (
     <div className="relative h-screen w-screen">
       <img
         src={NETFLIX_WALLPAPER}

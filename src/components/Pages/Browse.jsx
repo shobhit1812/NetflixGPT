@@ -9,9 +9,11 @@ import useTrendingMovies from "../../hooks/movies/useTrendingMovies";
 import useAiringTodayTV from "../../hooks/tv/useAiringTodayTV";
 import useTopRatedTV from "../../hooks/tv/useTopRatedTV";
 import useTrendingTV from "../../hooks/tv/useTrendingTV";
+import useOnline from "../../hooks/custom/useOnline";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const isOnline = useOnline();
 
   // fetching the data and updating the store
   useNowPlayingMovies();
@@ -21,7 +23,11 @@ const Browse = () => {
   useTopRatedTV();
   useTrendingTV();
 
-  return (
+  return !isOnline ? (
+    <h1 className="flex justify-center items-center font-poppins text-4xl mt-10">
+      🔴 Offline, Please check your internet connection
+    </h1>
+  ) : (
     <div className="scroll-smooth font-poppins w-full h-screen">
       <Header />
       {showGptSearch ? (
